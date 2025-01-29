@@ -33,7 +33,8 @@ export async function POST(req: NextRequest) {
       'w2w.payfast.co.za',
     ];
 
-    const ip = req.headers.get('x-forwarded-for') || req.ip;
+    const forwardedFor = req.headers.get('x-forwarded-for');
+    const ip = forwardedFor ? forwardedFor.split(',')[0].trim() : null;
     const isValidIP = await validatePayFastIP(ip, validHosts);
 
     if (!isValidIP) {
