@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generatePayFastSignature } from '@/config/payfast';
-import crypto from 'crypto';
+import dns from 'dns';
+import { promisify } from 'util';
+
+const dnsResolve = promisify(dns.resolve);
 
 export async function POST(req: NextRequest) {
   try {
@@ -75,12 +78,7 @@ async function validatePayFastIP(ip: string | null, validHosts: string[]): Promi
     const validIPs = await Promise.all(
       validHosts.map(async (host) => {
         try {
-          const addresses = await new Promise((resolve, reject) => {
-            require('dns').resolve(host, (err: Error | null, addresses: string[]) => {
-              if (err) reject(err);
-              else resolve(addresses);
-            });
-          });
+          const addresses = await dnsResolve(host);
           return addresses;
         } catch (error) {
           console.error(`Error resolving host ${host}:`, error);

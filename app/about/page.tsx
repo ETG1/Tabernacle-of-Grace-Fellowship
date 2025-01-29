@@ -87,11 +87,11 @@ export default function About() {
           
           <div className="grid md:grid-cols-2 gap-8">
             <TestimonialCard
-              quote="This church has become my second home. The community here is truly special."
+              quote={`&ldquo;This church has become my second home. The community here is truly special.&rdquo;`}
               author="Sarah M."
             />
             <TestimonialCard
-              quote="The teaching here has transformed my understanding of God's word and deepened my faith."
+              quote={`&ldquo;The teaching here has transformed my understanding of God's word and deepened my faith.&rdquo;`}
               author="John D."
             />
           </div>
