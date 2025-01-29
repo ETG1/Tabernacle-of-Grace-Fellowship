@@ -62,7 +62,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white">Daily Bible Verse</h2>
             <blockquote className="text-xl italic text-gray-600 dark:text-gray-300">
-              "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."
+              &ldquo;For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.&rdquo;
             </blockquote>
             <p className="mt-4 text-gray-500 dark:text-gray-400">John 3:16</p>
           </div>

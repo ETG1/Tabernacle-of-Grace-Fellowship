@@ -49,7 +49,7 @@ export default function ThankYou() {
 
               <div className="bg-blue-50 dark:bg-blue-900/30 p-6 rounded-lg mb-8">
                 <p className="text-blue-800 dark:text-blue-200">
-                  "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+                  &ldquo;Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.&rdquo;
                 </p>
                 <p className="text-blue-600 dark:text-blue-300 mt-2">
                   - 2 Corinthians 9:7
