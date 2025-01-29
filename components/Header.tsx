@@ -51,7 +51,7 @@ export default function Header() {
               <NavLink href="/" isScrolled={isScrolled} isHomePage={isHomePage}>Home</NavLink>
               <NavLink href="/about" isScrolled={isScrolled} isHomePage={isHomePage}>About</NavLink>
               <NavLink href="/events" isScrolled={isScrolled} isHomePage={isHomePage}>Events</NavLink>
-              <NavLink href="/give" isScrolled={isScrolled} isHomePage={isHomePage}>Give</NavLink>
+              <NavLink href="/give" isScrolled={isScrolled} isHomePage={isHomePage}>Tithes & Offerings</NavLink>
               <NavLink href="/contact" isScrolled={isScrolled} isHomePage={isHomePage}>Contact</NavLink>
             </div>
 

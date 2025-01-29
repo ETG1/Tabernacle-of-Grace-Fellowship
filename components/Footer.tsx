@@ -29,7 +29,7 @@ export default function Footer() {
               <FooterLink href="/" text="Home" />
               <FooterLink href="/about" text="About Us" />
               <FooterLink href="/events" text="Events" />
-              <FooterLink href="/give" text="Give" />
+              <FooterLink href="/give" text="Tithes & Offerings" />
               <FooterLink href="/contact" text="Contact" />
             </ul>
           </div>
