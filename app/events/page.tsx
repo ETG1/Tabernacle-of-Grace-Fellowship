@@ -4,6 +4,14 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Image from 'next/image';
 
+interface Event {
+  title: string;
+  date: string;
+  time: string;
+  description: string;
+  location: string;
+}
+
 export default function Events() {
   const upcomingEvents = [
     {
@@ -99,7 +107,7 @@ export default function Events() {
   );
 }
 
-function EventCard({ event, index }: { event: any; index: number }) {
+function EventCard({ event, index }: { event: Event; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

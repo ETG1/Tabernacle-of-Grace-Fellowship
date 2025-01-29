@@ -32,7 +32,7 @@ export default function Contact() {
           >
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
             <p className="text-xl opacity-90">
-              We'd love to hear from you. Get in touch with us for any inquiries.
+              We&apos;d love to hear from you. Get in touch with us for any inquiries.
             </p>
           </motion.div>
         </div>

@@ -36,7 +36,7 @@ export default function Give() {
           >
             <h1 className="text-4xl font-bold mb-4">Give to Our Ministry</h1>
             <p className="text-xl opacity-90">
-              Support our mission to spread God's love and make a difference in our community
+              Support our mission to spread God&apos;s love and make a difference in our community
             </p>
           </motion.div>
         </div>

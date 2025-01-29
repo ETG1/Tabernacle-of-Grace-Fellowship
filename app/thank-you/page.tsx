@@ -61,7 +61,7 @@ export default function ThankYou() {
                   A confirmation email has been sent to your inbox with the details of your donation.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300">
-                  If you have any questions, please don't hesitate to contact us.
+                  If you have any questions, please don&apos;t hesitate to contact us.
                 </p>
               </div>
             </div>
