@@ -90,7 +90,7 @@ export default function Header() {
                   <MobileNavLink href="/" onClick={toggleMenu}>Home</MobileNavLink>
                   <MobileNavLink href="/about" onClick={toggleMenu}>About</MobileNavLink>
                   <MobileNavLink href="/events" onClick={toggleMenu}>Events</MobileNavLink>
-                  <MobileNavLink href="/give" onClick={toggleMenu}>Give</MobileNavLink>
+                  <MobileNavLink href="/give" onClick={toggleMenu}>Tithes & Offerings</MobileNavLink>
                   <MobileNavLink href="/contact" onClick={toggleMenu}>Contact</MobileNavLink>
                 </div>
               </motion.div>
