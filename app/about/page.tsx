@@ -87,11 +87,11 @@ export default function About() {
           
           <div className="grid md:grid-cols-2 gap-8">
             <TestimonialCard
-              quote={`&ldquo;This church has become my second home. The community here is truly special.&rdquo;`}
+              quote="&ldquo;This church has become my second home. The community here is truly special.&rdquo;"
               author="Sarah M."
             />
             <TestimonialCard
-              quote={`&ldquo;The teaching here has transformed my understanding of God's word and deepened my faith.&rdquo;`}
+              quote="&ldquo;The teaching here has transformed my understanding of God&apos;s word and deepened my faith.&rdquo;"
               author="John D."
             />
           </div>
@@ -153,7 +153,7 @@ function TestimonialCard({ quote, author }: { quote: string; author: string }) {
       className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-lg"
     >
       <blockquote className="text-lg italic mb-4 text-gray-600 dark:text-gray-300">
-        "{quote}"
+        {quote}
       </blockquote>
       <p className="font-medium text-gray-800 dark:text-white">- {author}</p>
     </motion.div>
