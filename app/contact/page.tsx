@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Image from 'next/image';
 import { useState } from 'react';
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 export default function Contact() {
   return (
@@ -125,13 +126,20 @@ function ContactInfo({ icon, title, content }: { icon: string; title: string; co
 }
 
 function SocialLink({ href, icon }: { href: string; icon: string }) {
+  const iconMap = {
+    facebook: <FaFacebook size={20} />,
+    twitter: <FaTwitter size={20} />,
+    instagram: <FaInstagram size={20} />,
+    youtube: <FaYoutube size={20} />
+  };
+
   return (
     <a
       href={href}
       className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
     >
       <span className="sr-only">{icon}</span>
-      {/* Add your social media icons here */}
+      {iconMap[icon as keyof typeof iconMap]}
     </a>
   );
 }
