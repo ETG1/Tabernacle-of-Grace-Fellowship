@@ -1,45 +1,89 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: '/hero-bg.jpg',
+      title: 'Tabernacle of Grace Fellowship',
+      subtitle: 'A place of worship and spiritual growth'
+    },
+    {
+      image: '/hero-bg-2.jpg',
+      title: 'Join Our Community',
+      subtitle: 'Experience the love of Christ together'
+    },
+    {
+      image: '/hero-bg-3.jpg',
+      title: 'Grow Your Faith',
+      subtitle: 'Deepen your relationship with God'
+    }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 15000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <main className="min-h-screen">
       <Header />
       
-      {/* Hero Section with Parallax */}
+      {/* Hero Section with Carousel */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero-bg.jpg"
-            alt="Church background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-600/30 to-blue-900/40" />
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={currentSlide}
+            initial={{ opacity: 0, x: 1000 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -1000 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="absolute inset-0 z-0"
+            style={{ y }}
+          >
+            <Image
+              src={slides[currentSlide].image}
+              alt="Church background"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-600/30 to-blue-900/40" />
+          </motion.div>
+        </AnimatePresence>
         
-        <div className="relative z-10 text-center text-white px-4">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
-          >
-            Tabernacle of Grace Fellowship
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8"
-          >
-            A place of worship and spiritual growth
-          </motion.p>
+        <motion.div 
+          className="relative z-10 text-center text-white px-4"
+          style={{ opacity }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSlide}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <motion.h1 className="text-5xl md:text-6xl font-bold mb-6">
+                {slides[currentSlide].title}
+              </motion.h1>
+              
+              <motion.p className="text-xl md:text-2xl mb-8">
+                {slides[currentSlide].subtitle}
+              </motion.p>
+            </motion.div>
+          </AnimatePresence>
           
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -53,6 +97,20 @@ export default function Home() {
               Join Us
             </a>
           </motion.div>
+        </motion.div>
+
+        {/* Carousel Navigation Dots */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-3 h-3 rounded-full transition-colors ${
+                currentSlide === index ? 'bg-white' : 'bg-white/50'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -85,7 +143,7 @@ export default function Home() {
               description="Sunday worship service with praise and teaching"
             />
           </div>
-        </div>
+    </div>
       </section>
     </main>
   );

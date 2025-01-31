@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -60,45 +60,71 @@ export default function Give() {
             </div>
           </div>
 
-          {/* Tithe Section */}
-          {activeTab === 'tithe' && (
-            <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-12">
-                <div>
-                  <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-                    Pay Your Tithe
-                  </h2>
-                  <TitheCalculator income={income} setIncome={setIncome} titheAmount={titheAmount} />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
-                    
-                  </h2>
-                  <TitheForm titheAmount={titheAmount} />
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Forms Container */}
+          <div className="relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              {/* Tithe Section */}
+              {activeTab === 'tithe' && (
+                <motion.div
+                  key="tithe"
+                  initial={{ opacity: 0, x: 200 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -200 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="max-w-4xl mx-auto"
+                >
+                  <div className="grid md:grid-cols-2 gap-12">
+                    <div>
+                      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                        Pay Your Tithe
+                      </h2>
+                      <TitheCalculator income={income} setIncome={setIncome} titheAmount={titheAmount} />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
+                        
+                      </h2>
+                      <TitheForm titheAmount={titheAmount} />
+                    </div>
+                  </div>
+                </motion.div>
+              )}
 
-          {/* Offering Section */}
-          {activeTab === 'offering' && (
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center">
-                Give an Offering
-              </h2>
-              <OfferingForm />
-            </div>
-          )}
+              {/* Offering Section */}
+              {activeTab === 'offering' && (
+                <motion.div
+                  key="offering"
+                  initial={{ opacity: 0, x: 200 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -200 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="max-w-2xl mx-auto"
+                >
+                  <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center">
+                    Give an Offering
+                  </h2>
+                  <OfferingForm />
+                </motion.div>
+              )}
 
-          {/* Donation Section */}
-          {activeTab === 'donation' && (
-            <div className="max-w-2xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center">
-                Make a Donation
-              </h2>
-              <DonationForm />
-            </div>
-          )}
+              {/* Donation Section */}
+              {activeTab === 'donation' && (
+                <motion.div
+                  key="donation"
+                  initial={{ opacity: 0, x: 200 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -200 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="max-w-2xl mx-auto"
+                >
+                  <h2 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white text-center">
+                    Make a Donation
+                  </h2>
+                  <DonationForm />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
